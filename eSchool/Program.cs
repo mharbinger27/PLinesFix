@@ -26,28 +26,43 @@ namespace PLinesFix
             string destination = @"C:\Scripts\CanvasDenyl\input\ChangePLinesToDeleted.csv";
             string logfile = @"C:\Scripts\CanvasDenyl\PLinesFix\PLinesFixLog.txt";
 
-            // Create new destination file
-            clean(destination);
+            if (!File.Exists(input))
+            {
+                stopWatch.Stop();
+                using (StreamWriter w = File.AppendText(logfile))
+                    LogResult(w);
+            }
+            else
+            {
+                // Create new destination file
+                clean(destination);
 
-            // Loop through file, make changes, output, record lines modified
-            int linesWithP = 0;
-            linesWithP = parseModifyCopy(input, destination);
+                // Loop through file, make changes, output, record lines modified
+                int linesWithP = 0;
+                linesWithP = parseModifyCopy(input, destination);
+
+                // Replace old file with new file
+                shuffle(input, destination);
+
+                // End Stopwatch
+                stopWatch.Stop();
+                TimeSpan ts = stopWatch.Elapsed;
+
+                // Log Result
+                using (StreamWriter w = File.AppendText(logfile))
+                    LogResult(linesWithP, ts, w);
+            }
             
-            // Replace old file with new file
-            shuffle(input, destination);
-
-            // End Stopwatch
-            stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
-
-            // Log Result
-            using (StreamWriter w = File.AppendText(logfile))
-            logResult(linesWithP, ts, w);
         }
 
-        private static void logResult(int LWP, TimeSpan ts, TextWriter w)
+        private static void LogResult(TextWriter w)
         {
-            w.Write("\r\n" + LWP + " lines modified on " + DateTime.Now + ", time elapsed: " + ts.Seconds + "." + ts.Milliseconds + " seconds.");
+            w.Write("\r\n" + DateTime.Now + ": Input file Users.csv not found.  Operation aborted.");
+        }
+
+        private static void LogResult(int LWP, TimeSpan ts, TextWriter w)
+        {
+            w.Write("\r\n" + DateTime.Now + ": " + LWP + " lines modified successfully. Time elapsed: " + ts.Seconds + "." + ts.Milliseconds + " seconds.");
         }
 
         private static void shuffle(string input, string destination)
