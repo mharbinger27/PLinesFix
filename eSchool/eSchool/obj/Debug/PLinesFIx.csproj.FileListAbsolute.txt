@@ -1,0 +1,7 @@
+C:\Users\mharbinger\Documents\Visual Studio 2017\Projects\eSchool\eSchool\bin\Debug\eSchool.exe.config
+C:\Users\mharbinger\Documents\Visual Studio 2017\Projects\eSchool\eSchool\bin\Debug\eSchool.exe
+C:\Users\mharbinger\Documents\Visual Studio 2017\Projects\eSchool\eSchool\bin\Debug\eSchool.pdb
+C:\Users\mharbinger\Documents\Visual Studio 2017\Projects\eSchool\eSchool\obj\Debug\PLinesFIx.csproj.CoreCompileInputs.cache
+C:\Users\mharbinger\Documents\Visual Studio 2017\Projects\eSchool\eSchool\obj\Debug\eSchool.exe
+C:\Users\mharbinger\Documents\Visual Studio 2017\Projects\eSchool\eSchool\obj\Debug\eSchool.pdb
+C:\Users\mharbinger\Documents\Visual Studio 2017\Projects\eSchool\eSchool\obj\Debug\PLinesFix.csprojResolveAssemblyReference.cache
